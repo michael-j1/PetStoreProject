@@ -15,8 +15,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@Entity
-@Data
+@Entity//....persistent entity in database
+@Data//......generates boilerplate code for getters setters equals hashCode toString methods
 
 public class PetStore { 
 
@@ -24,6 +24,7 @@ public class PetStore {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   
   private Long   petStoreId;
+  
   private String petStoreName;
   private String petStoreAddress;
   private String petStoreCity;
@@ -41,11 +42,8 @@ public class PetStore {
 
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
-  @OneToMany(mappedBy = "petStore", cascade = CascadeType.ALL, orphanRemoval = true)Set<Employee> employees = new HashSet<>();
-
-
-
-
+  @OneToMany(mappedBy = "petStore", cascade = CascadeType.ALL, orphanRemoval = true)
+  Set<Employee> employees = new HashSet<>();
 
 
 

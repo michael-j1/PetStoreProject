@@ -1,7 +1,6 @@
 package pet.store.controller.error;
 
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -20,11 +19,14 @@ public class GlobalErrorHandler {
 	//Returns a NoSuchElementException message. The NoSuchElementException parameter is converted to a string value.
 	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public Map<String, String> handleNoSuchElementExeption(NoSuchElementException e) {
-		log.info("NoSuchElementException occurred: {}", e.toString());
-		Map<String, String> message = new HashMap<>();
-		message.put("message", e.toString());
-		return message;
+	public Map<String, String> handleNoSuchElementExeption(
+			NoSuchElementException e) {
+		//log.info("NoSuchElementException occurred: {}", e.toString());
+		//Map<String, String> message = new HashMap<>();
+		//message.put("message", e.toString());
+		//return message;
+		log.error("Exception: {}", e.toString());
+		return Map.of("message", e.toString());
 	}
 }
 //404 not found status 
